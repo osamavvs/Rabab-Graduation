@@ -1,0 +1,631 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --black: #111111;
+    --gold: #a47a35;
+    --gold-light: #c6a15b;
+    --cream: #f5f1e8;
+    --white: #fffdf8;
+}
+
+body {
+    background: var(--cream);
+    color: var(--black);
+    font-family: "Cairo", sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   شاشة البداية
+========================= */
+
+.welcome-screen {
+    position: fixed;
+    inset: 0;
+
+    background:
+        radial-gradient(circle at center, #292929 0%, #111 60%, #050505 100%);
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    z-index: 9999;
+
+    transition:
+        opacity .8s ease,
+        visibility .8s ease;
+}
+
+.welcome-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.welcome-content {
+    width: min(500px, 90%);
+}
+
+.cap {
+    font-size: 70px;
+
+    animation:
+        floating 2s infinite ease-in-out;
+}
+
+.welcome-small {
+    letter-spacing: 5px;
+    color: #c8a15a;
+    margin-top: 15px;
+}
+
+.welcome-content h1 {
+    font-size: 55px;
+    margin: 15px 0;
+}
+
+.welcome-content p {
+    line-height: 2;
+    color: #ddd;
+}
+
+#openButton {
+    margin-top: 30px;
+
+    border: 1px solid #c8a15a;
+    background: transparent;
+    color: white;
+
+    padding: 14px 35px;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+#openButton:hover {
+    background: #c8a15a;
+    color: #111;
+    transform: translateY(-3px);
+}
+
+
+/* =========================
+   الصفحة
+========================= */
+
+.hidden {
+    display: none;
+}
+
+#mainPage {
+    min-height: 100vh;
+    padding: 30px 15px;
+}
+
+.newspaper {
+    max-width: 1100px;
+    margin: auto;
+
+    background: var(--white);
+
+    border: 1px solid #222;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.12);
+}
+
+.top-line {
+    height: 8px;
+    background: #111;
+}
+
+
+/* =========================
+   Header
+========================= */
+
+.header {
+    text-align: center;
+
+    padding: 35px 25px 25px;
+
+    border-bottom: 1px solid #222;
+}
+
+.english-small {
+    font-family: "Playfair Display", serif;
+
+    font-size: 18px;
+
+    letter-spacing: 7px;
+}
+
+.header h2 {
+    font-family: "Playfair Display", serif;
+
+    font-size: clamp(45px, 8vw, 90px);
+
+    line-height: .95;
+
+    margin: 15px 0;
+
+    letter-spacing: -3px;
+}
+
+.date {
+    font-family: "Playfair Display", serif;
+
+    font-size: 22px;
+
+    letter-spacing: 4px;
+}
+
+
+/* =========================
+   Main
+========================= */
+
+.main-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.1fr
+        .9fr;
+}
+
+.information {
+    padding: 40px;
+
+    border-left: 1px solid #222;
+}
+
+.photo-section {
+    padding: 30px;
+
+    background: #ece6da;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+
+/* =========================
+   الاسم
+========================= */
+
+.section-title {
+    font-family: "Playfair Display", serif;
+
+    font-size: 15px;
+
+    letter-spacing: 2px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+
+    max-width: 450px;
+}
+
+.arabic-name {
+    font-size: clamp(45px, 7vw, 80px);
+
+    margin-top: 25px;
+
+    line-height: 1;
+
+    font-weight: 800;
+}
+
+.english-name {
+    color: var(--gold);
+
+    font-family: "Playfair Display", serif;
+
+    font-style: italic;
+
+    font-size: 30px;
+
+    margin-top: 10px;
+}
+
+
+/* =========================
+   التفاصيل
+========================= */
+
+.details {
+    display: flex;
+
+    gap: 12px;
+
+    margin: 30px 0;
+
+    flex-wrap: wrap;
+}
+
+.detail {
+    border: 1px solid #222;
+
+    padding: 12px 20px;
+
+    background: white;
+
+    min-width: 160px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.detail span {
+    color: #555;
+}
+
+.detail strong {
+    color: var(--gold);
+}
+
+
+/* =========================
+   الرسالة
+========================= */
+
+.message {
+    position: relative;
+
+    border: 1px solid #222;
+
+    padding: 30px;
+
+    background: #fff;
+
+    line-height: 2;
+
+    font-size: 16px;
+}
+
+.message-icon {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: var(--gold);
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: auto;
+}
+
+.message h2 {
+    text-align: center;
+
+    font-size: 28px;
+
+    margin: 12px 0 20px;
+}
+
+.message p {
+    margin-bottom: 12px;
+}
+
+.separator {
+    text-align: center;
+
+    color: var(--gold);
+
+    font-size: 20px;
+
+    margin: 8px 0;
+}
+
+
+/* =========================
+   الاقتباس
+========================= */
+
+.quote {
+    background: #111;
+
+    color: white;
+
+    margin-top: 25px;
+
+    padding: 22px;
+
+    text-align: center;
+
+    line-height: 2;
+
+    font-size: 19px;
+}
+
+.quote span {
+    color: var(--gold-light);
+
+    font-size: 30px;
+}
+
+
+/* =========================
+   الصورة
+========================= */
+
+.photo-frame {
+    background: white;
+
+    padding: 9px;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.15);
+}
+
+.photo-frame img {
+    width: 100%;
+
+    height: 580px;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.photo-caption {
+    text-align: center;
+
+    font-family: "Playfair Display", serif;
+
+    letter-spacing: 2px;
+
+    font-size: 13px;
+
+    margin-top: 15px;
+}
+
+
+/* =========================
+   Journey
+========================= */
+
+.journey {
+    border-top: 1px solid #222;
+
+    padding: 30px;
+}
+
+.journey-title {
+    background: #111;
+
+    color: white;
+
+    padding: 13px 20px;
+
+    font-family: "Playfair Display", serif;
+
+    letter-spacing: 2px;
+
+    font-size: 17px;
+
+    text-align: center;
+}
+
+.journey-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin-top: 20px;
+}
+
+.journey-card {
+    border: 1px solid #222;
+
+    padding: 25px;
+
+    text-align: center;
+
+    background: #faf8f2;
+}
+
+.journey-icon {
+    font-size: 35px;
+
+    margin-bottom: 10px;
+}
+
+.journey-card h3 {
+    margin-bottom: 10px;
+
+    color: var(--gold);
+}
+
+.journey-card p {
+    line-height: 1.9;
+
+    color: #444;
+}
+
+
+/* =========================
+   Footer
+========================= */
+
+footer {
+    border-top: 1px solid #222;
+
+    padding: 35px 20px;
+
+    text-align: center;
+}
+
+.footer-cap {
+    font-size: 35px;
+}
+
+footer h2 {
+    margin: 10px 0;
+
+    font-size: 30px;
+}
+
+footer p {
+    color: #555;
+}
+
+.footer-year {
+    font-family: "Playfair Display", serif;
+
+    font-size: 25px;
+
+    color: var(--gold);
+
+    margin-top: 12px;
+}
+
+
+/* =========================
+   Confetti
+========================= */
+
+.confetti {
+    position: fixed;
+
+    top: -20px;
+
+    width: 9px;
+    height: 14px;
+
+    z-index: 10000;
+
+    animation:
+        fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+    }
+}
+
+@keyframes floating {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 800px) {
+
+    #mainPage {
+        padding: 10px;
+    }
+
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .information {
+        border-left: 0;
+        border-bottom: 1px solid #222;
+
+        padding: 25px 18px;
+    }
+
+    .photo-section {
+        padding: 18px;
+    }
+
+    .photo-frame img {
+        height: 450px;
+    }
+
+    .journey-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header h2 {
+        font-size: 48px;
+    }
+
+    .message {
+        padding: 20px;
+
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .welcome-content h1 {
+        font-size: 42px;
+    }
+
+    .english-small {
+        font-size: 13px;
+    }
+
+    .header {
+        padding: 25px 10px;
+    }
+
+    .header h2 {
+        font-size: 39px;
+    }
+
+    .date {
+        font-size: 17px;
+    }
+
+    .details {
+        flex-direction: column;
+    }
+
+    .detail {
+        width: 100%;
+    }
+
+    .photo-frame img {
+        height: 400px;
+    }
+
+    .arabic-name {
+        font-size: 48px;
+    }
+}
