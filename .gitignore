@@ -3,3 +3,4 @@ __pycache__/
 reports/*.html
 .env
 venv/
+*.log
