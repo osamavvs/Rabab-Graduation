@@ -1,0 +1,2 @@
+locust==2.24.1
+python-telegram-bot==20.7
